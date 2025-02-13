@@ -56,15 +56,15 @@ def create_sort_and_slice_ecfp_featuriser(mols_train,
 
         mols_train = [mol_1, mol_2, ...]
     
-    that should be used to calibrate the Sort & Slice operator. This training set can then be employed along with a set of desired ECFP hyperparameter settings to construct a molecular featurisation function:
+    that should be used to calibrate the Sort & Slice operator. This training set can then be employed along with a set of desired ECFP hyperparameter settings to create a molecular featurisation function:
     
-        ecfp_featuriser = construct_sort_and_slice_ecfp_featuriser(mols_train = mols_train, 
-                                                                   max_radius = 2, 
-                                                                   pharm_atom_invs = False, 
-                                                                   bond_invs = True, 
-                                                                   chirality = False, 
-                                                                   sub_counts = True, 
-                                                                   vec_dimension = 1024)
+        ecfp_featuriser = create_sort_and_slice_ecfp_featuriser(mols_train = mols_train, 
+                                                                max_radius = 2, 
+                                                                pharm_atom_invs = False, 
+                                                                bond_invs = True, 
+                                                                chirality = False, 
+                                                                sub_counts = True, 
+                                                                vec_dimension = 1024)
                                                                
     Then ecfp_featuriser(mol) is a 1-dimensional numpy array of length vec_dimension representing the vectorial ECFP for mol pooled via a Sort & Slice operator calibrated on mols_train. 
     
@@ -89,7 +89,7 @@ def create_sort_and_slice_ecfp_featuriser(mols_train,
     
     sub_id_enumerator = lambda mol: morgan_generator.GetSparseCountFingerprint(mol).GetNonzeroElements()
     
-    # construct dictionary that maps each integer substructure identifier sub_id in mols_train to its associated prevalence (i.e., to the total number of compounds in mols_train that contain sub_id at least once)
+    # create dictionary that maps each integer substructure identifier sub_id in mols_train to its associated prevalence (i.e., to the total number of compounds in mols_train that contain sub_id at least once)
     sub_ids_to_prevs_dict = {}
     for mol in mols_train:
         for sub_id in sub_id_enumerator(mol).keys():

@@ -24,9 +24,9 @@ First select a training set of RDKit mol objects
 
     mols_train = [mol_1, mol_2, ...] 
     
-that should be used to calibrate the Sort & Slice operator. This training set can then be employed along with a set of desired ECFP hyperparameter settings to construct a molecular featurisation function:
+that should be used to calibrate the Sort & Slice operator. This training set can then be employed along with a set of desired ECFP hyperparameter settings to create a molecular featurisation function:
     
-    ecfp_featuriser = construct_sort_and_slice_ecfp_featuriser(mols_train = mols_train, 
+    ecfp_featuriser = create_sort_and_slice_ecfp_featuriser(mols_train = mols_train, 
                                                                max_radius = 2, 
                                                                pharm_atom_invs = False, 
                                                                bond_invs = True, 
